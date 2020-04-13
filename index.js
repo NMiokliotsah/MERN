@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const path = require('path');
 const homeRoute = require('./routes/home');
 const coursesRoute = require('./routes/courses');
 const addRoute = require('./routes/add');
@@ -19,7 +20,7 @@ app.engine('hbs', hbs.engine); //initialize hbs engine
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true})); // ????
 app.use('/', homeRoute);
 app.use('/courses', coursesRoute);
