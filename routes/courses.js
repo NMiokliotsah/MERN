@@ -1,18 +1,18 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const Course = require('../models/course');
 const router = Router();
 
 router.get('/', async (req, res) => {
     const courses = await Course.getAll();
     res.render('courses', {
-        title:'Courses',
+        title: 'Courses',
         isCourses: true,
         courses
     });
 });
 
 router.get('/:id/edit', async (req, res) => {
-    if(!req.query.allow) {
+    if (!req.query.allow) {
         return res.redirect('/');
     }
 
