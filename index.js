@@ -32,9 +32,9 @@ app.use('/card', cardRoute);
 async function start() {
     try {
         const url = `mongodb+srv://Nikita:CSFuiwvxWYhgW74G@cluster0-wxbi5.mongodb.net/shop`
-        await mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+        await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
         app.listen(PORT, () => {
-          console.log(`Server is running on port ${PORT}`)
+            console.log(`Server is running on port ${PORT}`)
         });
     } catch (e) {
         console.log(e);
