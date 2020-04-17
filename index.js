@@ -44,6 +44,7 @@ async function start() {
         const url = `mongodb+srv://Nikita:CSFuiwvxWYhgW74G@cluster0-wxbi5.mongodb.net/shop`;
         await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
         const candidate = await User.findOne();
+        
         if (!candidate) {
             const user = new User({
                 name: "Nikita",
