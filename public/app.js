@@ -4,9 +4,23 @@ const toCurrency = price => {
 		style: 'currency'
 	}).format(price);
 }
+const toDate = date => {
+	return new Intl.DateTimeFormat('ru-Ru', {
+		day: '2-digit',
+		month: 'long',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit'
+	}).format(new Date(date));
+}
 
 document.querySelectorAll('.price').forEach(price => {
 	price.textContent = toCurrency(price.textContent);
+});
+
+document.querySelectorAll('.date').forEach(date => {
+	date.textContent = toDate(date.textContent);
 });
 
 const $card = document.querySelector("#card");

@@ -6,6 +6,7 @@ const homeRoute = require('./routes/home');
 const coursesRoute = require('./routes/courses');
 const addRoute = require('./routes/add');
 const cardRoute = require('./routes/card');
+const orderRoute = require('./routes/orders');
 const User = require('./models/user');
 
 const app = express();
@@ -38,6 +39,7 @@ app.use('/', homeRoute);
 app.use('/add', addRoute);
 app.use('/courses', coursesRoute);
 app.use('/card', cardRoute);
+app.use('/orders', orderRoute);
 
 async function start() {
     try {
