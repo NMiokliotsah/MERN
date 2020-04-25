@@ -39,3 +39,7 @@
 .auth{
     padding-top: 1rem;
 }
+
+.alert{
+    color: red;
+}

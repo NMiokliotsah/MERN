@@ -9,10 +9,11 @@ const cardRoute         = require('./routes/card');
 const orderRoute        = require('./routes/orders');
 const authRoute         = require('./routes/auth');
 const session           = require('express-session');
+const flash             = require('connect-flash');
+const csrf              = require('csurf');
 const userMiddleware    = require('./middleware/user');
 const MongoStore        = require('connect-mongodb-session')(session);
 const varMiddleware     = require('./middleware/variables');
-const User              = require('./models/user');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -38,6 +39,8 @@ app.use(session({
     saveUninitialized: false,
     store
 }));
+app.use(csrf());
+app.use(flash());
 app.use(varMiddleware);
 app.use(userMiddleware);
 app.use('/', homeRoute);
