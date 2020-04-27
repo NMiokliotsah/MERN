@@ -1,7 +1,7 @@
-const { Router } = require('express');
-const Course = require('../models/course');
-const auth = require('../middleware/auths');
-const router = Router();
+const { Router }    = require('express');
+const Course        = require('../models/course');
+const auth          = require('../middleware/auths');
+const router        = Router();
 
 function mapCartItems(cart) {
     return cart.items.map(c => ({

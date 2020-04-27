@@ -1,7 +1,7 @@
-const { Router } = require('express');
-const Order = require('../models/orders');
-const auth = require('../middleware/auths');
-const router = Router();
+const { Router }    = require('express');
+const Order         = require('../models/orders');
+const auth          = require('../middleware/auths');
+const router        = Router();
 
 router.get('/', auth, async (req, res) => {
     try {
