@@ -13,8 +13,9 @@ const keys              = require('./keys');
 const flash             = require('connect-flash');
 const csrf              = require('csurf');
 const userMiddleware    = require('./middleware/user');
-const MongoStore        = require('connect-mongodb-session')(session);
 const varMiddleware     = require('./middleware/variables');
+const errorHandler      = require('./middleware/error');
+const MongoStore        = require('connect-mongodb-session')(session);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -51,6 +52,7 @@ app.use('/courses', coursesRoute);
 app.use('/card', cardRoute);
 app.use('/orders', orderRoute);
 app.use('/auth', authRoute);
+app.use(errorHandler);
 
 async function start() {
     try {
