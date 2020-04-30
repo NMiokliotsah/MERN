@@ -26,17 +26,17 @@
     font-size: 2.5rem;
 }
 
-.card-action.actions{
+.card-action.actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.edit-course{
+.edit-course {
     margin-bottom: 2rem;
 }
 
-.auth{
+.auth {
     padding-top: 1rem;
 }
 
@@ -47,4 +47,9 @@
     margin-bottom: 1rem;
     background: rgba(255, 0, 0, .3);
     color: red;
-  }
+}
+
+.avatar {
+    max-width: 300px;
+    height: auto;
+}

@@ -8,12 +8,14 @@ const addRoute          = require('./routes/add');
 const cardRoute         = require('./routes/card');
 const orderRoute        = require('./routes/orders');
 const authRoute         = require('./routes/auth');
+const profileRouter     = require('./routes/profile');
 const session           = require('express-session');
 const keys              = require('./keys');
 const flash             = require('connect-flash');
 const csrf              = require('csurf');
 const userMiddleware    = require('./middleware/user');
 const varMiddleware     = require('./middleware/variables');
+const fileMiddleware    = require('./middleware/file');
 const errorHandler      = require('./middleware/error');
 const MongoStore        = require('connect-mongodb-session')(session);
 
@@ -35,6 +37,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: keys.SESSION_SECRET,
@@ -42,6 +45,7 @@ app.use(session({
     saveUninitialized: false,
     store
 }));
+app.use(fileMiddleware.single('avatar'));
 app.use(csrf());
 app.use(flash());
 app.use(varMiddleware);
@@ -52,6 +56,7 @@ app.use('/courses', coursesRoute);
 app.use('/card', cardRoute);
 app.use('/orders', orderRoute);
 app.use('/auth', authRoute);
+app.use('/profile', profileRouter);
 app.use(errorHandler);
 
 async function start() {
